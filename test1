@@ -1,3 +1,20 @@
+--Service
+local Tween = game:GetService("TweenService")
+--Variables
+local Sidebar = script.Parent: WaitForChild("Sidebar")
+local PlayBtn = Sidebar: WaitForChild("Play")
+local CreditsBtn = Sidebar: WaitForChild("Credits")
+local Title = Sidebar: WaitForChild("Title")
+
+
+
+Tween:Create(
+ Sidebar,
+TweenInfo.new(0.4, Enum.EasingStyle.Quad, 
+Enum.EasingDirection.Out, 0, false, 0),
+{Position = UDim2.new(0, 0, 0, 0)}
+):Play()
+
 if IY_LOADED and not _G.IY_DEBUG == true then
     -- error("Infinite Yield is already running!", 0)
     return
@@ -13,7 +30,7 @@ if not game:IsLoaded() then
     local notLoaded = Instance.new("Message")
     notLoaded.Parent = COREGUI
     notLoaded.Text = "Infinite Yield is waiting for the game to load"
-    game.Loaded:Wait(0.5)
+    game.Loaded:Wait()
     notLoaded:Destroy()
 end
 
